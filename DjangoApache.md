@@ -107,4 +107,51 @@ https://www.youtube.com/watch?v=VNBpdT0N8hw
 
 
 
+# Install FTP Server on the Beaglebone Black
 
+## Part 1: FTP Server
+
+### Step 1: Update the Repositories
+
+Type `sudo apt-get update`
+
+### Step 2: Install vsftpd
+
+Type `sudo apt-get install vsftpd`
+
+### Step 3: Configure vsftpd
+
+Edit the configuration file */etc/vsftpd.conf*.
+Type: `sudo nano /etc/vsftpd.conf`
+
+**Important Configurations**
+Make sure to have this on */etc/vsftpd.conf*:
+
+* anonymous_enable=YES
+* local_enable=YES
+* write_enable=YES
+
+**Save and exit *nano*.**
+
+### Step 4: Restart vsftpd Service
+
+Type `sudo service vsftpd restart`
+
+## Part 2: FTP Client
+
+Now that the FTP server is installed, configured and running, let's use it.
+
+### Step 1: Get the IP Address of the Host Machine
+
+On the host machine, type `ifconfig`
+
+
+### Step 2: Filezilla - Connect to the FTP Server
+
+Setup **Filezilla** on the client machine.
+> **HOST**: 192.168.0.6 (IP address shown by ìfconfig` on the host machine).
+> **Username**: debian
+> **Password**: temppwd (password for the user *debian*)
+> **Port**: blank (default: 21)
+
+And click on `Quick Connect`.
